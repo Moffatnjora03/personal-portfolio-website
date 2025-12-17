@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+  body{
+    font-family:'Inter',sans-serif;
+    background:#0b0d12;
+    color:#f5f7fa;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh
+  }
+  .box{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+    padding:2rem;
+    width:100%;
+    max-width:360px;
+    text-align:center
+  }
+  input{
+    width:100%;
+    padding:.8rem;
+    margin:1rem 0;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.2);
+    background:transparent;
+    color:#fff
+  }
+  button{
+    width:100%;
+    padding:.8rem;
+    border-radius:12px;
+    border:none;
+    background:#c8a75e;
+    color:#000;
+    font-weight:700;
+    cursor:pointer
+  }
+  .error{color:#ff4d4d;margin-top:.8rem}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Admin Login</h2>
+  <input type="password" id="password" placeholder="Enter password">
+  <button onclick="login()">Login</button>
+  <p class="error" id="error"></p>
+</div>
+
+<script>
+  const PASSWORD = "Moffat.03"; // 🔒 CHANGE THIS
+
+  function login(){
+    const input = document.getElementById("password").value;
+    if(input === PASSWORD){
+      localStorage.setItem("adminAuth","true");
+      window.location.href = "admin.html";
+    }else{
+      document.getElementById("error").textContent = "Wrong password";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -10,7 +10,7 @@
       --bg: #0b0d12;
       --card: rgba(255,255,255,0.08);
       --border: rgba(255,255,255,0.15);
-      --accent: #6cf2c2;
+      --accent: #c8a75e;
       --text: #f5f7fa;
       --muted: #9aa4b2;
     }
@@ -90,6 +90,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn.primary {
@@ -130,180 +132,98 @@
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
     }
+
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem}
-  .project-card img{width:100%;border-radius:14px;margin-bottom:1rem;transition:transform .4s ease}
-  .project-card:hover img{transform:scale(1.05)}
-  .project-card{cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
-  .project-card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.6)}
-  .reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
-  .reveal.active{opacity:1;transform:none}
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:99}
-  .modal.active{display:flex}
-  .modal img{max-width:90%;max-height:80%;border-radius:18px}
-  .cursor{width:30px;height:30px;border:2px solid var(--accent);border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%,-50%);transition:transform .1s ease;z-index:100}
-</style>
+    .project-card img{width:100%;border-radius:14px;margin-bottom:1rem;transition:transform .4s ease}
+    .project-card:hover img{transform:scale(1.05)}
+    .project-card{cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+
+    .reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
+    .reveal.active{opacity:1;transform:none}
+
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:99}
+    .modal.active{display:flex}
+    .modal img{max-width:90%;max-height:80%;border-radius:18px}
+
+    .cursor{width:30px;height:30px;border:2px solid var(--accent);border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%,-50%);transition:transform .1s ease;z-index:100}
+  </style>
 </head>
 <body>
 
 <header>
   <section class="hero">
 
-    <!-- LEFT: LUXURY INTRO -->
     <div class="glass">
       <div class="badge">Dark Luxury × Futuristic AI</div>
-      <h1>Hello, I’m <span>Moffa</span><br>Creative Designer & Visual Thinker</h1>
+      <h1>Hello, I’m <span>Moffa</span><br>Luxury Visual Designer</h1>
       <p class="lead">
-        I craft premium visuals, posters, branding and digital experiences 
-        that feel modern, intelligent and unforgettable.
+        I design bold, modern visuals for brands, nightlife, and creators who want
+        to stand out, attract attention, and look premium across every platform.
       </p>
 
       <div class="actions">
-        <button class="btn primary">View Projects</button>
-        <button class="btn">Contact Me</button>
+        <!-- FIXED: buttons changed to links -->
+        <a href="projects.html" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn">Contact Me</a>
       </div>
     </div>
 
-    <!-- RIGHT: AI PANEL -->
     <div class="glass ai-panel">
-      <div class="ai-box">
-        <strong>AI Status:</strong> Online<br>
-        Creative Engine Ready
-      </div>
-      <div class="ai-box">
-        <strong>Capabilities</strong><br>
-        • Poster & Flyer Design<br>
-        • Branding & Logos<br>
-        • Social Media Creatives<br>
-        • Web Visuals
-      </div>
-      <div class="ai-box">
-        <strong>Mission</strong><br>
-        Turning ideas into bold visual impact.
-      </div>
+      <div class="ai-box"><strong>AI Status:</strong> Online<br>Creative Engine Ready</div>
+      <div class="ai-box"><strong>Capabilities</strong><br>• Poster & Flyer Design<br>• Branding & Logos<br>• Social Media Creatives<br>• Web Visuals</div>
+      <div class="ai-box"><strong>Mission</strong><br>Turning ideas into bold visual impact.</div>
     </div>
 
   </section>
 </header>
 
-<!-- PROJECTS SECTION -->
 <section style="padding:4rem 1.5rem;">
   <div style="max-width:1100px;margin:auto;">
     <h2 style="font-size:2.2rem;margin-bottom:0.8rem;">Selected <span style="color:var(--accent)">Projects</span></h2>
-    <p style="color:var(--muted);margin-bottom:2.5rem;max-width:600px;">
-      A curated selection of visual work crafted for impact, clarity, and modern brands.
-    </p>
+    <p style="color:var(--muted);margin-bottom:2.5rem;max-width:600px;">A curated selection of visual work crafted for impact.</p>
 
     <div class="projects-grid">
-
-      <div class="glass project-card">
-  <img src="https://via.placeholder.com/400x260" alt="Poster Design" />
-  <h3>Poster Design</h3>
-  <p>Bold event and promo posters with strong visual hierarchy.</p>
-</div>
-
-      <div class="glass project-card">
-  <img src="https://via.placeholder.com/400x260" alt="Brand Identity" />
-  <h3>Brand Identity</h3>
-  <p>Logos, colors and systems built for recognition.</p>
-</div>
-
-      <div class="glass project-card">
-  <img src="https://via.placeholder.com/400x260" alt="Social Media Creatives" />
-  <h3>Social Media Creatives</h3>
-  <p>High‑engagement posts and campaign visuals.</p>
-</div>
-
-      <div class="glass project-card">
-  <img src="https://via.placeholder.com/400x260" alt="Digital Flyers" />
-  <h3>Digital Flyers</h3>
-  <p>Clean, modern flyers optimized for online reach.</p>
-</div>
-
+      <div class="glass project-card"><img src="https://via.placeholder.com/400x260" alt="Poster"><h3>Poster Design</h3><p>Bold event posters.</p></div>
+      <div class="glass project-card"><img src="https://via.placeholder.com/400x260" alt="Brand"><h3>Brand Identity</h3><p>Logos & systems.</p></div>
+      <div class="glass project-card"><img src="https://via.placeholder.com/400x260" alt="Social"><h3>Social Media</h3><p>High-engagement visuals.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT SECTION -->
-<section style="padding:4rem 1.5rem;">
-  <div style="max-width:1100px;margin:auto;">
-    <div class="glass reveal">
-      <h2 style="font-size:2.2rem;margin-bottom:1rem;">About <span style="color:var(--accent)">Moffa</span></h2>
-      <p style="color:var(--muted);max-width:720px;line-height:1.7;">
-        I’m a visual designer driven by contrast, clarity, and emotion. My work blends
-        luxury aesthetics with modern digital culture — posters that stop the scroll,
-        brands that feel confident, and visuals that speak before words do.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- AI ASSISTANT SECTION -->
-<section style="padding:4rem 1.5rem;">
-  <div style="max-width:1100px;margin:auto;">
-    <div class="glass">
-      <h2 style="font-size:2.1rem;margin-bottom:1rem;">Moffa AI <span style="color:var(--accent)">Creative Assistant</span></h2>
-      <p style="color:var(--muted);margin-bottom:2rem;max-width:650px;">
-        Think of this as my creative brain — fast, focused, and built to turn ideas into premium visuals.
-      </p>
-
-      <div style="display:grid;grid-template-columns:1fr;gap:1rem;max-width:720px;">
-        <div class="ai-box"><strong>You:</strong> I need a poster for an event</div>
-        <div class="ai-box"><strong>Moffa AI:</strong> Got it. Target audience, vibe, and deadline?</div>
-        <div class="ai-box"><strong>You:</strong> Nightlife, bold, modern</div>
-        <div class="ai-box"><strong>Moffa AI:</strong> Perfect. Expect a high‑contrast luxury design with fast delivery.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<section style="padding:4rem 1.5rem;">
+<section id="contact" style="padding:4rem 1.5rem;">
   <div style="max-width:1100px;margin:auto;">
     <div class="glass reveal" style="text-align:center;">
-      <h2 style="font-size:2.2rem;margin-bottom:1rem;">Let’s <span style="color:var(--accent)">Work Together</span></h2>
-      <p style="color:var(--muted);margin-bottom:2rem;">Ready to elevate your visuals?</p>
+      <h2 style="font-size:2.2rem;margin-bottom:1rem;">Let’s <span style="color:var(--accent)">Create</span></h2>
+      <p style="color:var(--muted);margin-bottom:2rem;">Have a project in mind?</p>
       <div class="actions" style="justify-content:center;">
-        <a class="btn primary" href="mailto:your@email.com">Email Me</a>
-        <a class="btn" href="#">WhatsApp</a>
+        <a class="btn primary" href="mailto:your@email.com">Start a Project</a>
+        <a class="btn" href="https://wa.me/254769403196" target="_blank">Chat on WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  © 2025 Moffa — Designed with intent.
-</footer>
+<footer>© 2025 Moffa — Designed with intent.</footer>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <img id="modalImg" src="" alt="Project Preview" />
-</div>
+<div class="modal" id="modal"><img id="modalImg" alt="Project Preview" /></div>
 <div class="cursor" id="cursor"></div>
 
 <script>
-  // Project modal
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
   document.querySelectorAll('.project-card img').forEach(img => {
-    img.addEventListener('click', () => {
-      modal.classList.add('active');
-      modalImg.src = img.src;
-    });
+    img.addEventListener('click', () => { modal.classList.add('active'); modalImg.src = img.src; });
   });
   modal.addEventListener('click', () => modal.classList.remove('active'));
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
-  const revealOnScroll = () => {
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) el.classList.add('active');
-    });
-  };
+  const revealOnScroll = () => reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+  });
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll();
 
-  // Cursor glow
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';

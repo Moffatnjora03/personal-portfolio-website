@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin — Projects</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:Inter,sans-serif;
+  background:#0b0d12;
+  color:#f5f7fa;
+  padding:2rem
+}
+h1{margin-bottom:1rem}
+.project{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:14px;
+  padding:1rem;
+  margin-bottom:1rem
+}
+input{
+  width:100%;
+  padding:.6rem;
+  margin:.4rem 0;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.2);
+  background:transparent;
+  color:#fff
+}
+button{
+  margin-top:.6rem;
+  margin-right:.5rem;
+  padding:.5rem 1rem;
+  border-radius:10px;
+  border:none;
+  font-weight:600;
+  cursor:pointer
+}
+.save{background:#c8a75e;color:#000}
+.delete{background:#ff4d4d;color:#fff}
+.add{background:#4caf50;color:#000}
+.logout{background:#444;color:#fff;margin-bottom:1rem}
+</style>
+</head>
+
+<body>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+<h1>Project Manager</h1>
+
+<input id="adminSearch" placeholder="Search projects…">
+
+<button class="add" onclick="addProject()">+ Add Project</button>
+
+<div id="adminProjects"></div>
+
+<!-- SHARED DATA -->
+<script src="projects-data.js"></script>
+
+<script>
+/* ---------- AUTH ---------- */
+function logout(){
+  localStorage.removeItem("adminAuth");
+  window.location.href="login.html";
+}
+if(localStorage.getItem("adminAuth")!=="true"){
+  window.location.href="login.html";
+}
+
+/* ---------- DATA ---------- */
+let data =
+  JSON.parse(localStorage.getItem("projects")) ||
+  (typeof projects!=="undefined" ? projects : []);
+
+const container=document.getElementById("adminProjects");
+const search=document.getElementById("adminSearch");
+
+/* ---------- SAVE ---------- */
+function save(){
+  localStorage.setItem("projects",JSON.stringify(data));
+  alert("Projects saved successfully ✅");
+}
+
+/* ---------- RENDER ---------- */
+function render(){
+  container.innerHTML="";
+  const q=search.value.toLowerCase();
+
+  data
+    .map((p,index)=>({...p,index}))
+    .filter(p=>
+      p.title.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q)
+    )
+    .forEach(p=>{
+      container.innerHTML+=`
+        <div class="project" data-index="${p.index}">
+          <input value="${p.title}" placeholder="Title">
+          <input value="${p.category}" placeholder="Category">
+          <input value="${p.client}" placeholder="Client">
+          <input value="${p.year}" placeholder="Year">
+          <input value="${p.image}" placeholder="Image URL">
+          <input value="${p.description}" placeholder="Description">
+          <button class="save" onclick="saveProject(${p.index})">Save</button>
+          <button class="delete" onclick="removeProject(${p.index})">Delete</button>
+        </div>
+      `;
+    });
+}
+
+/* ---------- SAVE SINGLE PROJECT ---------- */
+function saveProject(index){
+  const card=document.querySelector(`.project[data-index="${index}"]`);
+  const inputs=card.querySelectorAll("input");
+
+  data[index]={
+    ...data[index],
+    title:inputs[0].value,
+    category:inputs[1].value,
+    client:inputs[2].value,
+    year:inputs[3].value,
+    image:inputs[4].value,
+    description:inputs[5].value
+  };
+
+  save();
+}
+
+/* ---------- DELETE ---------- */
+function removeProject(index){
+  if(confirm("Delete this project?")){
+    data.splice(index,1);
+    save();
+    render();
+  }
+}
+
+/* ---------- ADD ---------- */
+function addProject(){
+  data.unshift({
+    title:"New Project",
+    category:"poster",
+    client:"Client Name",
+    year:new Date().getFullYear(),
+    image:"https://via.placeholder.com/600x400",
+    description:"Project description"
+  });
+  save();
+  render();
+}
+
+/* ---------- SEARCH ---------- */
+search.addEventListener("input",render);
+
+render();
+</script>
+
+</body>
+</html>
