@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Project — Moffa</title>
+<style>
+body{font-family:Arial;background:#0b0b0b;color:#eee;padding:40px}
+form{max-width:500px;margin:auto}
+input,textarea,select,button{
+  width:100%;margin-bottom:15px;padding:10px;
+  background:#111;border:1px solid #333;color:#eee
+}
+button{background:#c9a24d;color:#000;cursor:pointer}
+</style>
+</head>
+<body>
+
+<h2>Add New Project</h2>
+
+<form id="projectForm">
+  <input required placeholder="Title" id="title">
+  <input placeholder="Client" id="client">
+  <input placeholder="Year (e.g. 2025)" id="year">
+  
+  <select id="category">
+    <option value="poster">Poster</option>
+    <option value="branding">Branding</option>
+    <option value="social">Social Media</option>
+  </select>
+
+  <input placeholder="Image URL" id="image">
+  <textarea placeholder="Description" id="description"></textarea>
+
+  <button type="submit">Save Project</button>
+</form>
+
+<script>
+const form = document.getElementById('projectForm');
+
+form.onsubmit = e => {
+  e.preventDefault();
+
+  const projects = JSON.parse(localStorage.getItem('projects')) || [];
+
+  projects.push({
+    title: title.value,
+    client: client.value,
+    year: year.value,
+    category: category.value,
+    image: image.value,
+    description: description.value
+  });
+
+  localStorage.setItem('projects', JSON.stringify(projects));
+  alert('Project added!');
+  form.reset();
+};
+</script>
+
+</body>
+</html>
